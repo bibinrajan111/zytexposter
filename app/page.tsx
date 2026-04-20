@@ -1,17 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import {
-  Download,
   Factory,
   FlaskConical,
   Globe,
   Leaf,
   MapPin,
   Microscope,
+  Printer,
   ShieldCheck,
 } from "lucide-react";
 
@@ -79,6 +78,24 @@ const sections: Section[] = [
   },
 ];
 
+const relatedImages = [
+  {
+    src: "/images/biotech-crops.svg",
+    alt: "Agricultural biotechnology crops and nutrition visuals",
+    caption: "Agriculture, feed and nutrition innovation",
+  },
+  {
+    src: "/images/biotech-lab.svg",
+    alt: "Biotechnology lab illustration",
+    caption: "Research-driven enzyme and probiotic development",
+  },
+  {
+    src: "/images/biotech-fermentation.svg",
+    alt: "Fermentation and industrial biotech process visual",
+    caption: "Fermentation and scalable industrial applications",
+  },
+];
+
 function TiltCard({ title, icon, points }: Section) {
   const ref = useRef<HTMLDivElement | null>(null);
   const x = useMotionValue(0);
@@ -108,12 +125,12 @@ function TiltCard({ title, icon, points }: Section) {
       onMouseLeave={reset}
       className="group [perspective:1000px]"
     >
-      <motion.div style={{ rotateX, rotateY }} className="[transform-style:preserve-3d]">
+      <motion.div style={{ rotateX, rotateY }} className="h-full [transform-style:preserve-3d]">
         <Card className="h-full border-yellow-300/30 bg-zinc-900/55 transition duration-300 group-hover:border-yellow-300/65">
           <CardContent className="space-y-3">
             <div className="flex items-center gap-2.5">
               {icon}
-              <h3 className="text-lg font-semibold uppercase text-yellow-300">{title}</h3>
+              <h3 className="poster-display text-lg font-semibold uppercase text-yellow-300">{title}</h3>
             </div>
             <ul className="space-y-2 text-sm leading-relaxed text-zinc-200">
               {points.map((point) => (
@@ -130,9 +147,24 @@ function TiltCard({ title, icon, points }: Section) {
   );
 }
 
+function ImageHighlight({ src, alt, caption }: (typeof relatedImages)[number]) {
+  return (
+    <motion.div whileHover={{ y: -6, scale: 1.01 }} transition={{ duration: 0.25 }}>
+      <Card className="overflow-hidden border-yellow-300/30 bg-zinc-900/45">
+        <div className="relative aspect-[4/3] w-full">
+          <Image src={src} alt={alt} fill className="object-cover" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        </div>
+        <CardContent className="py-3">
+          <p className="text-sm text-zinc-200">{caption}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const posterRef = useRef<HTMLDivElement | null>(null);
-  const [downloading, setDownloading] = useState(false);
   const [cursor, setCursor] = useState({ x: 50, y: 28 });
 
   const glow = useMemo(
@@ -141,30 +173,6 @@ export default function Home() {
     }),
     [cursor],
   );
-
-  const exportPdf = async () => {
-    if (!posterRef.current) return;
-    setDownloading(true);
-    try {
-      const canvas = await html2canvas(posterRef.current, {
-        scale: 2,
-        backgroundColor: "#0a0907",
-        useCORS: true,
-      });
-
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
-      const pageWidth = 210;
-      const pageHeight = 297;
-      const ratio = Math.min(pageWidth / canvas.width, pageHeight / canvas.height);
-      const w = canvas.width * ratio;
-      const h = canvas.height * ratio;
-      pdf.addImage(imgData, "PNG", (pageWidth - w) / 2, (pageHeight - h) / 2, w, h);
-      pdf.save("zytex-poster.pdf");
-    } finally {
-      setDownloading(false);
-    }
-  };
 
   return (
     <main className="relative min-h-screen overflow-x-clip px-3 py-10 md:px-6">
@@ -175,11 +183,11 @@ export default function Home() {
         transition={{ duration: 0.28 }}
       />
 
-      <div className="no-print mx-auto mb-6 flex max-w-5xl items-center justify-between gap-3 rounded-2xl border border-yellow-300/30 bg-zinc-950/70 p-4 backdrop-blur-xl">
-        <p className="text-sm text-zinc-200">Interactive Poster • Web + high-fidelity PDF export</p>
-        <Button onClick={exportPdf} disabled={downloading}>
-          <Download className="mr-2 size-4" />
-          {downloading ? "Generating PDF..." : "Download PDF"}
+      <div className="no-print mx-auto mb-6 flex max-w-5xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-yellow-300/30 bg-zinc-950/70 p-4 backdrop-blur-xl">
+        <p className="text-sm text-zinc-200">Interactive Poster • Optimized for browser Print to PDF</p>
+        <Button onClick={() => window.print()}>
+          <Printer className="mr-2 size-4" />
+          Print / Save as PDF
         </Button>
       </div>
 
@@ -197,7 +205,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_15%_15%,rgba(250,204,21,0.16),transparent_35%),radial-gradient(circle_at_85%_25%,rgba(250,204,21,0.10),transparent_45%),linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
 
         <header className="relative z-10 flex flex-col gap-4 border-b border-yellow-300/25 pb-6 md:flex-row md:items-center md:justify-between">
-          <div className="rounded-full border border-yellow-300/50 px-5 py-2 text-sm tracking-[0.18em] text-yellow-300">
+          <div className="poster-display rounded-full border border-yellow-300/50 px-5 py-2 text-sm tracking-[0.22em] text-yellow-300">
             ZYTEX
           </div>
           <div className="flex items-start gap-2 text-sm text-zinc-200 md:max-w-[320px]">
@@ -211,10 +219,10 @@ export default function Home() {
 
         <div className="relative z-10 mt-8 space-y-6">
           <div>
-            <h1 className="text-2xl font-extrabold uppercase leading-tight text-yellow-300 md:text-4xl">
+            <h1 className="poster-display text-2xl font-extrabold uppercase leading-tight text-yellow-300 md:text-4xl">
               Innovating Biotechnology for a Sustainable Future
             </h1>
-            <p className="mt-3 max-w-4xl text-base leading-relaxed text-zinc-100 md:text-2xl/relaxed">
+            <p className="mt-3 max-w-4xl text-base leading-relaxed text-zinc-100 md:text-xl/relaxed">
               Zytex is a biotechnology-driven company focused on developing enzyme
               technologies, probiotics, and bio-based solutions that enhance
               productivity across agriculture, animal nutrition, food processing,
@@ -228,39 +236,29 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="grid gap-4 md:grid-cols-[1fr_1.2fr_1fr] md:items-stretch">
-            <Card className="min-h-[220px] border-yellow-300/25 bg-gradient-to-br from-emerald-900/30 via-zinc-950 to-emerald-700/20">
-              <CardContent className="flex h-full items-end text-sm text-zinc-100">
-                Fresh food science, probiotics, and enzyme innovation for better
-                nutrition outcomes.
-              </CardContent>
-            </Card>
+          <div className="grid gap-4 md:grid-cols-3">
+            {relatedImages.map((image) => (
+              <ImageHighlight key={image.src} {...image} />
+            ))}
+          </div>
 
+          <div className="grid gap-4 md:grid-cols-[1.4fr_1fr]">
             <TiltCard {...sections[3]} />
-
-            <Card className="min-h-[220px] border-yellow-300/25 bg-gradient-to-bl from-amber-900/20 via-zinc-950 to-yellow-500/15">
-              <CardContent className="flex h-full items-end text-sm text-zinc-100">
-                Process optimization in industrial ecosystems with scalable
-                biotechnology solutions.
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-[1.6fr_1fr]">
             <TiltCard {...sections[4]} />
-            <Card className="border-yellow-300/30 bg-black/45">
-              <CardContent className="space-y-4">
-                <h2 className="text-lg font-semibold uppercase text-yellow-300">Contact</h2>
-                <div className="space-y-2 text-sm text-zinc-100">
-                  <p className="flex items-center gap-2">
-                    <Globe className="size-4 text-yellow-300" /> www.zytex.com
-                  </p>
-                  <p>info@zytex.com</p>
-                  <p>+91-22-6772 3000</p>
-                </div>
-              </CardContent>
-            </Card>
           </div>
+
+          <Card className="border-yellow-300/30 bg-black/45">
+            <CardContent className="space-y-4 py-5">
+              <h2 className="poster-display text-lg font-semibold uppercase text-yellow-300">Contact</h2>
+              <div className="grid gap-2 text-sm text-zinc-100 md:grid-cols-3">
+                <p className="flex items-center gap-2">
+                  <Globe className="size-4 text-yellow-300" /> www.zytex.com
+                </p>
+                <p>info@zytex.com</p>
+                <p>+91-22-6772 3000</p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
     </main>

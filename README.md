@@ -7,8 +7,9 @@ A Next.js (App Router) + TypeScript + Tailwind CSS v4 poster website that recrea
 - Lenis smooth momentum scrolling
 - Aurora/cursor glow background beam
 - 3D interactive tilt cards
-- Responsive design
-- Downloadable high-fidelity PDF export from the exact web composition
+- Biotech-related visual image panels
+- Responsive layout
+- Print-ready browser export (Save as PDF)
 
 ## Run locally
 
@@ -19,6 +20,6 @@ npm run dev
 
 Then open `http://localhost:3000`.
 
-## PDF export
+## Export as PDF
 
-Click **Download PDF** in the top toolbar. The app captures the poster element and saves a centered A4 PDF while preserving the on-screen color theme.
+Click **Print / Save as PDF** and use your browser print dialog to save an A4 PDF with preserved dark/yellow theme colors.

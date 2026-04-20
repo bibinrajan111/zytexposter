@@ -9,6 +9,14 @@ html,
 body {
   background: radial-gradient(circle at top, #252010 0%, #0a0907 55%, #070606 100%);
   color: var(--fg);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.poster-display {
+  font-family: var(--font-space), var(--font-poppins), system-ui, sans-serif;
 }
 
 * {
