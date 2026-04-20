@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0907;
+  --fg: #f3fdf7;
+}
+
+html,
+body {
+  background: radial-gradient(circle at top, #123524 0%, #0a1712 48%, #07110d 100%);
+  color: var(--fg);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.poster-display {
+  font-family: var(--font-space), var(--font-poppins), system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media print {
+  html,
+  body {
+    background: #0a0907 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-poster {
+    margin: 0 !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
