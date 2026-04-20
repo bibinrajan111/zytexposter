@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" fill="#0B0A09"/>
+  <circle cx="250" cy="210" r="150" fill="#FACC15" fill-opacity="0.24"/>
+  <circle cx="960" cy="180" r="160" fill="#34D399" fill-opacity="0.26"/>
+  <rect x="180" y="250" width="220" height="450" rx="70" fill="#27272A" stroke="#FACC15" stroke-opacity="0.6" stroke-width="8"/>
+  <rect x="490" y="190" width="220" height="510" rx="70" fill="#27272A" stroke="#FACC15" stroke-opacity="0.6" stroke-width="8"/>
+  <rect x="800" y="280" width="220" height="420" rx="70" fill="#27272A" stroke="#FACC15" stroke-opacity="0.6" stroke-width="8"/>
+  <path d="M290 620c0-100 60-150 110-220 45 70 110 120 110 220" fill="#84CC16" fill-opacity="0.75"/>
+  <path d="M600 590c0-120 70-175 115-250 55 75 120 130 120 250" fill="#22D3EE" fill-opacity="0.72"/>
+  <path d="M910 610c0-90 56-140 100-200 42 60 95 110 95 200" fill="#F59E0B" fill-opacity="0.74"/>
+  <text x="150" y="120" fill="#FEF08A" font-family="Arial, sans-serif" font-size="58" font-weight="700">FERMENTATION &amp; PROCESS SCALE-UP</text>
+</svg>

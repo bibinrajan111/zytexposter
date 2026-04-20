@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" fill="#16130A"/>
+  <circle cx="220" cy="180" r="150" fill="#86EFAC" fill-opacity="0.35"/>
+  <circle cx="970" cy="220" r="170" fill="#FACC15" fill-opacity="0.28"/>
+  <ellipse cx="630" cy="760" rx="460" ry="210" fill="#064E3B"/>
+  <path d="M170 620c120-180 250-210 360-40 80-180 200-220 370-110 80 50 140 110 180 180" stroke="#D9F99D" stroke-width="24" stroke-linecap="round"/>
+  <g fill="#F59E0B">
+    <circle cx="430" cy="320" r="62"/>
+    <circle cx="540" cy="300" r="68"/>
+    <circle cx="650" cy="325" r="64"/>
+    <circle cx="760" cy="310" r="59"/>
+  </g>
+  <text x="90" y="120" fill="#FEF08A" font-family="Arial, sans-serif" font-size="60" font-weight="700">AGRI + NUTRITION BIOTECH</text>
+</svg>
