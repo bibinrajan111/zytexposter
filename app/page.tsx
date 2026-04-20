@@ -10,11 +10,9 @@ import {
   Leaf,
   MapPin,
   Microscope,
-  Printer,
   ShieldCheck,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 type Section = {
@@ -175,21 +173,13 @@ export default function Home() {
   );
 
   return (
-    <main className="relative min-h-screen overflow-x-clip px-3 py-10 md:px-6">
+    <main className="relative min-h-screen overflow-x-clip px-2 py-4 md:px-4 md:py-6">
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={glow}
         transition={{ duration: 0.28 }}
       />
-
-      <div className="no-print mx-auto mb-6 flex max-w-5xl flex-wrap items-center justify-between gap-3 rounded-2xl border border-yellow-300/30 bg-zinc-950/70 p-4 backdrop-blur-xl">
-        <p className="text-sm text-zinc-200">Interactive Poster • Optimized for browser Print to PDF</p>
-        <Button onClick={() => window.print()}>
-          <Printer className="mr-2 size-4" />
-          Print / Save as PDF
-        </Button>
-      </div>
 
       <section
         ref={posterRef}
@@ -200,7 +190,7 @@ export default function Home() {
             y: ((e.clientY - rect.top) / rect.height) * 100,
           });
         }}
-        className="print-poster relative mx-auto w-full max-w-5xl rounded-[2rem] border border-yellow-300/35 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black p-6 shadow-[0_28px_70px_-30px_rgba(250,204,21,0.5)] md:p-10"
+        className="print-poster relative mx-auto flex w-full max-w-[900px] flex-col justify-between rounded-[2rem] border border-yellow-300/35 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black p-5 shadow-[0_28px_70px_-30px_rgba(250,204,21,0.5)] md:p-8"
       >
         <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_15%_15%,rgba(250,204,21,0.16),transparent_35%),radial-gradient(circle_at_85%_25%,rgba(250,204,21,0.10),transparent_45%),linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
 
@@ -217,12 +207,12 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="relative z-10 mt-8 space-y-6">
+        <div className="relative z-10 mt-6 space-y-4">
           <div>
             <h1 className="poster-display text-2xl font-extrabold uppercase leading-tight text-yellow-300 md:text-4xl">
               Innovating Biotechnology for a Sustainable Future
             </h1>
-            <p className="mt-3 max-w-4xl text-base leading-relaxed text-zinc-100 md:text-xl/relaxed">
+            <p className="mt-3 max-w-4xl text-base leading-relaxed text-zinc-100 md:text-lg/relaxed">
               Zytex is a biotechnology-driven company focused on developing enzyme
               technologies, probiotics, and bio-based solutions that enhance
               productivity across agriculture, animal nutrition, food processing,
@@ -230,19 +220,19 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-3">
             {sections.slice(0, 3).map((section) => (
               <TiltCard key={section.title} {...section} />
             ))}
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-3">
             {relatedImages.map((image) => (
               <ImageHighlight key={image.src} {...image} />
             ))}
           </div>
 
-          <div className="grid gap-4 md:grid-cols-[1.4fr_1fr]">
+          <div className="grid gap-3 md:grid-cols-[1.35fr_1fr]">
             <TiltCard {...sections[3]} />
             <TiltCard {...sections[4]} />
           </div>
@@ -250,7 +240,7 @@ export default function Home() {
           <Card className="border-yellow-300/30 bg-black/45">
             <CardContent className="space-y-4 py-5">
               <h2 className="poster-display text-lg font-semibold uppercase text-yellow-300">Contact</h2>
-              <div className="grid gap-2 text-sm text-zinc-100 md:grid-cols-3">
+              <div className="grid gap-1 text-sm text-zinc-100 md:grid-cols-3">
                 <p className="flex items-center gap-2">
                   <Globe className="size-4 text-yellow-300" /> www.zytex.com
                 </p>
