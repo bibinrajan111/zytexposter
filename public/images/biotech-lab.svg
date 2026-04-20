@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
   <rect width="1200" height="900" fill="#0A0A0A"/>
-  <circle cx="180" cy="170" r="130" fill="#22D3EE" fill-opacity="0.25"/>
-  <circle cx="1030" cy="200" r="180" fill="#FACC15" fill-opacity="0.22"/>
-  <rect x="210" y="200" width="780" height="520" rx="42" fill="#18181B" stroke="#FACC15" stroke-opacity="0.6" stroke-width="8"/>
+  <circle cx="180" cy="170" r="130" fill="#6EE7B7" fill-opacity="0.25"/>
+  <circle cx="1030" cy="200" r="180" fill="#86EFAC" fill-opacity="0.22"/>
+  <rect x="210" y="200" width="780" height="520" rx="42" fill="#18181B" stroke="#86EFAC" stroke-opacity="0.6" stroke-width="8"/>
   <path d="M400 560V370h110v190c0 35 32 60 70 60s70-25 70-60V370h110v190c0 90-80 155-180 155S400 650 400 560Z" fill="#67E8F9" fill-opacity="0.75"/>
   <circle cx="515" cy="430" r="22" fill="#FEF9C3"/>
-  <circle cx="610" cy="470" r="18" fill="#FDE047"/>
+  <circle cx="610" cy="470" r="18" fill="#A7F3D0"/>
   <circle cx="680" cy="420" r="14" fill="#A3E635"/>
-  <text x="270" y="160" fill="#FDE047" font-family="Arial, sans-serif" font-size="58" font-weight="700">ENZYME &amp; PROBIOTIC LAB</text>
+  <text x="270" y="160" fill="#A7F3D0" font-family="Arial, sans-serif" font-size="58" font-weight="700">ENZYME &amp; PROBIOTIC LAB</text>
 </svg>
