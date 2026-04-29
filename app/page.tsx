@@ -79,9 +79,9 @@ const sections: Section[] = [
 
 const referenceLinks = [
   "https://share.google/TDWEJOciYMVc6VUCW",
-  "/images/biotech-crops.svg",
-  "/images/biotech-lab.svg",
-  "/images/biotech-fermentation.svg",
+  "Custom illustration authored locally in this project: /images/biotech-crops.svg",
+  "Custom illustration authored locally in this project: /images/biotech-lab.svg",
+  "Custom illustration authored locally in this project: /images/biotech-fermentation.svg",
 ];
 
 const relatedImages = [
@@ -203,27 +203,27 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_15%_15%,rgba(250,204,21,0.16),transparent_35%),radial-gradient(circle_at_85%_25%,rgba(250,204,21,0.10),transparent_45%),linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
 
         <header className="relative z-10 flex flex-col gap-4 border-b border-yellow-300/35 pb-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-4">
-              <Image src="/logos/company-logo.svg" alt="Zytex company logo" width={90} height={90} className="rounded-xl border border-yellow-300/40 bg-black/30 p-1" />
-              <div className="poster-display rounded-full border border-yellow-300/60 px-5 py-2 text-sm tracking-[0.22em] text-yellow-300">
-                ZYTEX
-              </div>
+          <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+            <div className="flex justify-start">
+              <Image src="/logos/company-logo.svg" alt="Zytex company logo" width={220} height={84} className="h-auto w-[220px] rounded-lg border border-yellow-300/35 bg-white p-1" />
             </div>
-            <div className="flex items-start gap-2 text-sm text-zinc-100 md:max-w-[340px]">
-              <MapPin className="mt-0.5 size-4 text-yellow-300" />
-              <p>
-                Zytex Biotech Pvt. Ltd. 702/B Polaris, Off Marol Maroshi Road,
-                Marol, Andheri (East), Mumbai - 400059, India.
-              </p>
+
+            <div className="poster-display rounded-full border border-yellow-300/60 px-5 py-2 text-center text-sm tracking-[0.22em] text-yellow-300">
+              ZYTEX
             </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Image src="/logos/ansbach-logo.svg" alt="University Ansbach logo" width={62} height={62} className="rounded-lg border border-yellow-300/40 bg-black/30 p-1" />
-            <div>
-              <p className="poster-display text-sm uppercase tracking-wider text-yellow-300">University Ansbach</p>
+
+            <div className="flex flex-col items-end gap-2">
+              <Image src="/logos/ansbach-logo.svg" alt="University Ansbach logo" width={220} height={84} className="h-auto w-[220px] rounded-lg border border-yellow-300/35 bg-zinc-100 p-1" />
               <p className="text-base font-semibold text-zinc-50">Angel Reji</p>
             </div>
+          </div>
+
+          <div className="flex items-start gap-2 text-sm text-zinc-100 md:max-w-[360px]">
+            <MapPin className="mt-0.5 size-4 text-yellow-300" />
+            <p>
+              Zytex Biotech Pvt. Ltd. 702/B Polaris, Off Marol Maroshi Road,
+              Marol, Andheri (East), Mumbai - 400059, India.
+            </p>
           </div>
         </header>
 
@@ -263,7 +263,13 @@ export default function Home() {
               <h2 className="poster-display text-base font-bold uppercase tracking-wide text-yellow-300">References</h2>
               <ul className="space-y-1 break-all text-sm leading-relaxed text-zinc-100">
                 {referenceLinks.map((link) => (
-                  <li key={link}>• <a href={link} target="_blank" rel="noreferrer" className="underline decoration-yellow-300/50 underline-offset-2">{link}</a></li>
+                  <li key={link}>
+                    • {link.startsWith("http") ? (
+                      <a href={link} target="_blank" rel="noreferrer" className="underline decoration-yellow-300/50 underline-offset-2">{link}</a>
+                    ) : (
+                      <span>{link}</span>
+                    )}
+                  </li>
                 ))}
               </ul>
             </CardContent>
