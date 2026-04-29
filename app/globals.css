@@ -2,12 +2,12 @@
 
 :root {
   --bg: #0a0907;
-  --fg: #f3fdf7;
+  --fg: #f8fafc;
 }
 
 html,
 body {
-  background: radial-gradient(circle at top, #123524 0%, #0a1712 48%, #07110d 100%);
+  background: radial-gradient(circle at top, #252010 0%, #0a0907 55%, #070606 100%);
   color: var(--fg);
   font-family: var(--font-poppins), system-ui, sans-serif;
 }
@@ -37,8 +37,8 @@ h3,
 
   .print-poster {
     margin: 0 !important;
-    width: 210mm !important;
-    min-height: 297mm !important;
+    width: 297mm !important;
+    min-height: 420mm !important;
     border-radius: 0 !important;
     border: 0 !important;
     box-shadow: none !important;

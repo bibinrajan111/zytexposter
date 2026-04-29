@@ -24,7 +24,7 @@ type Section = {
 const sections: Section[] = [
   {
     title: "Bio-tech Solutions & Applications",
-    icon: <FlaskConical className="size-5 text-emerald-300" />,
+    icon: <FlaskConical className="size-5 text-yellow-300" />,
     points: [
       "Enzyme-based biotechnology solutions",
       "Probiotics for animal nutrition",
@@ -34,7 +34,7 @@ const sections: Section[] = [
   },
   {
     title: "Industrial Application",
-    icon: <Factory className="size-5 text-emerald-300" />,
+    icon: <Factory className="size-5 text-yellow-300" />,
     points: [
       "Agriculture",
       "Animal Nutrition",
@@ -45,7 +45,7 @@ const sections: Section[] = [
   },
   {
     title: "Impact & Contribution",
-    icon: <Leaf className="size-5 text-emerald-300" />,
+    icon: <Leaf className="size-5 text-yellow-300" />,
     points: [
       "Improving agricultural efficiency naturally",
       "Enhancing animal health and productivity",
@@ -54,7 +54,7 @@ const sections: Section[] = [
   },
   {
     title: "Core Biotech Products",
-    icon: <Microscope className="size-5 text-emerald-300" />,
+    icon: <Microscope className="size-5 text-yellow-300" />,
     points: [
       "Industrial Enzymes",
       "Feed Additives & Probiotics",
@@ -66,7 +66,7 @@ const sections: Section[] = [
   },
   {
     title: "Research & Development",
-    icon: <ShieldCheck className="size-5 text-emerald-300" />,
+    icon: <ShieldCheck className="size-5 text-yellow-300" />,
     points: [
       "Advanced enzymology research",
       "Continuous innovation in biotechnology",
@@ -74,6 +74,14 @@ const sections: Section[] = [
       "Global quality standards compliance",
     ],
   },
+];
+
+
+const referenceLinks = [
+  "https://share.google/TDWEJOciYMVc6VUCW",
+  "/images/biotech-crops.svg",
+  "/images/biotech-lab.svg",
+  "/images/biotech-fermentation.svg",
 ];
 
 const relatedImages = [
@@ -124,16 +132,16 @@ function TiltCard({ title, icon, points }: Section) {
       className="group [perspective:1000px]"
     >
       <motion.div style={{ rotateX, rotateY }} className="h-full [transform-style:preserve-3d]">
-        <Card className="h-full border-emerald-300/35 bg-emerald-950/40 transition duration-300 group-hover:border-emerald-300/70">
+        <Card className="h-full border-yellow-300/35 bg-zinc-900/55 transition duration-300 group-hover:border-yellow-300/70">
           <CardContent className="space-y-3">
             <div className="flex items-center gap-2.5">
               {icon}
-              <h3 className="poster-display text-lg font-bold uppercase tracking-wide text-emerald-300">{title}</h3>
+              <h3 className="poster-display text-lg font-bold uppercase tracking-wide text-yellow-300">{title}</h3>
             </div>
             <ul className="space-y-2 text-base leading-relaxed text-zinc-100">
               {points.map((point) => (
                 <li key={point} className="flex gap-2">
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-emerald-300" />
+                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-yellow-300" />
                   <span>{point}</span>
                 </li>
               ))}
@@ -148,10 +156,10 @@ function TiltCard({ title, icon, points }: Section) {
 function ImageHighlight({ src, alt, caption }: (typeof relatedImages)[number]) {
   return (
     <motion.div whileHover={{ y: -6, scale: 1.01 }} transition={{ duration: 0.25 }}>
-      <Card className="overflow-hidden border-emerald-300/35 bg-emerald-950/35">
+      <Card className="overflow-hidden border-yellow-300/35 bg-black/45">
         <div className="relative aspect-[4/3] w-full">
           <Image src={src} alt={alt} fill className="object-cover" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-900/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
         </div>
         <CardContent className="py-3">
           <p className="text-sm text-zinc-100">{caption}</p>
@@ -167,7 +175,7 @@ export default function Home() {
 
   const glow = useMemo(
     () => ({
-      background: `radial-gradient(420px circle at ${cursor.x}% ${cursor.y}%, rgba(74, 222, 128, 0.20), transparent 55%)`,
+      background: `radial-gradient(420px circle at ${cursor.x}% ${cursor.y}%, rgba(250, 204, 21, 0.19), transparent 55%)`,
     }),
     [cursor],
   );
@@ -190,26 +198,38 @@ export default function Home() {
             y: ((e.clientY - rect.top) / rect.height) * 100,
           });
         }}
-        className="print-poster relative mx-auto flex w-full max-w-[900px] flex-col justify-between rounded-[2rem] border border-emerald-300/45 bg-gradient-to-b from-emerald-950/60 via-zinc-950 to-zinc-950 p-5 shadow-[0_28px_70px_-30px_rgba(74,222,128,0.45)] md:p-8"
+        className="print-poster relative mx-auto flex w-full max-w-[900px] flex-col justify-between rounded-[2rem] border border-yellow-300/45 bg-gradient-to-b from-zinc-900 via-zinc-950 to-black p-5 shadow-[0_28px_70px_-30px_rgba(250,204,21,0.5)] md:p-8"
       >
-        <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_15%_15%,rgba(74,222,128,0.18),transparent_35%),radial-gradient(circle_at_85%_25%,rgba(110,231,183,0.12),transparent_45%),linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
+        <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_15%_15%,rgba(250,204,21,0.16),transparent_35%),radial-gradient(circle_at_85%_25%,rgba(250,204,21,0.10),transparent_45%),linear-gradient(120deg,transparent,rgba(255,255,255,0.03),transparent)]" />
 
-        <header className="relative z-10 flex flex-col gap-4 border-b border-emerald-200/35 pb-6 md:flex-row md:items-center md:justify-between">
-          <div className="poster-display rounded-full border border-emerald-300/60 px-5 py-2 text-sm tracking-[0.22em] text-emerald-300">
-            ZYTEX
+        <header className="relative z-10 flex flex-col gap-4 border-b border-yellow-300/35 pb-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-4">
+              <Image src="/logos/company-logo.svg" alt="Zytex company logo" width={90} height={90} className="rounded-xl border border-yellow-300/40 bg-black/30 p-1" />
+              <div className="poster-display rounded-full border border-yellow-300/60 px-5 py-2 text-sm tracking-[0.22em] text-yellow-300">
+                ZYTEX
+              </div>
+            </div>
+            <div className="flex items-start gap-2 text-sm text-zinc-100 md:max-w-[340px]">
+              <MapPin className="mt-0.5 size-4 text-yellow-300" />
+              <p>
+                Zytex Biotech Pvt. Ltd. 702/B Polaris, Off Marol Maroshi Road,
+                Marol, Andheri (East), Mumbai - 400059, India.
+              </p>
+            </div>
           </div>
-          <div className="flex items-start gap-2 text-sm text-zinc-100 md:max-w-[320px]">
-            <MapPin className="mt-0.5 size-4 text-emerald-300" />
-            <p>
-              Zytex Biotech Pvt. Ltd. 702/B Polaris, Off Marol Maroshi Road,
-              Marol, Andheri (East), Mumbai - 400059, India.
-            </p>
+          <div className="flex items-center gap-3">
+            <Image src="/logos/ansbach-logo.svg" alt="University Ansbach logo" width={62} height={62} className="rounded-lg border border-yellow-300/40 bg-black/30 p-1" />
+            <div>
+              <p className="poster-display text-sm uppercase tracking-wider text-yellow-300">University Ansbach</p>
+              <p className="text-base font-semibold text-zinc-50">Angel Reji</p>
+            </div>
           </div>
         </header>
 
         <div className="relative z-10 mt-6 space-y-4">
           <div>
-            <h1 className="poster-display text-2xl font-extrabold uppercase leading-tight text-emerald-300 md:text-[2.15rem] drop-shadow-[0_2px_10px_rgba(16,185,129,0.35)]">
+            <h1 className="poster-display text-2xl font-extrabold uppercase leading-tight text-yellow-300 md:text-[2.15rem] drop-shadow-[0_2px_10px_rgba(250,204,21,0.35)]">
               Innovating Biotechnology for a Sustainable Future
             </h1>
             <p className="mt-3 max-w-4xl text-base leading-relaxed text-zinc-50 md:font-medium md:text-xl/relaxed">
@@ -237,12 +257,24 @@ export default function Home() {
             <TiltCard {...sections[4]} />
           </div>
 
-          <Card className="border-emerald-300/35 bg-emerald-950/35">
+
+          <Card className="border-yellow-300/35 bg-black/45">
+            <CardContent className="space-y-3 py-4">
+              <h2 className="poster-display text-base font-bold uppercase tracking-wide text-yellow-300">References</h2>
+              <ul className="space-y-1 break-all text-sm leading-relaxed text-zinc-100">
+                {referenceLinks.map((link) => (
+                  <li key={link}>• <a href={link} target="_blank" rel="noreferrer" className="underline decoration-yellow-300/50 underline-offset-2">{link}</a></li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="border-yellow-300/35 bg-black/45">
             <CardContent className="space-y-4 py-5">
-              <h2 className="poster-display text-lg font-bold uppercase tracking-wide text-emerald-300">Contact</h2>
+              <h2 className="poster-display text-lg font-bold uppercase tracking-wide text-yellow-300">Contact</h2>
               <div className="grid gap-1 text-base text-zinc-100 md:grid-cols-3">
                 <p className="flex items-center gap-2">
-                  <Globe className="size-4 text-emerald-300" /> www.zytex.com
+                  <Globe className="size-4 text-yellow-300" /> www.zytex.com
                 </p>
                 <p>info@zytex.com</p>
                 <p>+91-22-6772 3000</p>
